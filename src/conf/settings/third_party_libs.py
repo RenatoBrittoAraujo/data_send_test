@@ -2,7 +2,6 @@ from datetime import timedelta
 
 from .django import env
 
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',

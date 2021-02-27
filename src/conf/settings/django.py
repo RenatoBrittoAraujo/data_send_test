@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import environ
+from .project import PROJECT_INSTALLED_APPS
 
 root = environ.Path(__file__) - 3  # get root of the project
 env = environ.Env()
@@ -52,24 +53,25 @@ DATABASES = {
 
 # Application definition
 
-INSTALLED_APPS = [
-    # Standard django
+DJANGO_CORE_INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
 
-    # Libs
+THIRD_PARTY_INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'drf_yasg',
     'djongo',
-
-    # User defined
-    'core',
 ]
+
+INSTALLED_APPS = DJANGO_CORE_INSTALLED_APPS\
+                 + PROJECT_INSTALLED_APPS\
+                 + THIRD_PARTY_INSTALLED_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
