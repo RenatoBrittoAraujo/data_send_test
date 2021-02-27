@@ -14,11 +14,16 @@ services:
     restart: unless-stopped
 
   rmback:
-    build: ./rmback
+    build: ./src
     container_name: rmback
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      chmod +x scripts/create_superuser.sh &&
+      ./scripts/create_superuser.sh &&
+      python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ./rmback:/rmback
+      - ./src:/src
     ports:
       - 8000:8000
     depends_on:

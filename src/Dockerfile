@@ -1,8 +1,8 @@
 FROM python:3.8
 ENV PYTHONUNBUFFERED 1
 
-RUN mkdir /rmback
-WORKDIR /rmback
+RUN mkdir /src
+WORKDIR /src
 
 RUN apt-get update && \
         apt-get install -y \
@@ -21,7 +21,7 @@ RUN apt-get update && \
 		libpoppler-cpp-dev \
         python-dev
 		
-COPY requirements.txt /rmback/
+COPY requirements.txt /src/
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
-COPY . /rmback/
+COPY . /src/
