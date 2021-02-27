@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mongodb: 
+    image : mongo
+    container_name: mongodb
+    environment:
+    - PUID=1000
+    - PGID=1000
+    volumes:
+    - ./database:/data/db
+    ports:
+    - 27017:27017
+    restart: unless-stopped
+
+  rmback:
+    build: ./rmback
+    container_name: rmback
+    command: python manage.py runserver
+    volumes:
+      - ./rmback:/rmback
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb

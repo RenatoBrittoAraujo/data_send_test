@@ -1,7 +1,6 @@
 *.pyc
 __pycache__/
 
-db.sqlite3
 public/
 .env
 .venv/
@@ -14,3 +13,12 @@ public/
 # coverage result
 .coverage
 /coverage/
+
+## Databases
+
+# sqlite3 (for fast setup)
+db.sqlite3
+
+# mongodb
+database/*
+!database/.gitkeep
