@@ -1,4 +1,4 @@
-"""Boilerplate URL Configuration
+"""Boilerplate URL Configuration.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -39,7 +39,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', include(router.urls)),
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('auth/', include('djoser.urls')),
@@ -48,7 +48,10 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    # This is not suitable for production use! For some common deployment strategies, see
+    # This is not suitable for production use! For some common deployment
+    # strategies, see
     # https://docs.djangoproject.com/en/3.0/howto/static-files/deployment/
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(
+        settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

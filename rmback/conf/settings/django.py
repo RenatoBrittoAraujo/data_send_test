@@ -53,17 +53,22 @@ DATABASES = {
 # Application definition
 
 INSTALLED_APPS = [
+    # Standard django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Libs
     'rest_framework',
     'djoser',
     'drf_yasg',
+    'djongo',
+
+    # User defined
     'core',
-    'djongo'
 ]
 
 MIDDLEWARE = [
